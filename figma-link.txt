@@ -1,1 +1,4 @@
 https://www.figma.com/board/nOevxaCVzHne85UI0zTRsr/NC-NEWS-Plan?node-id=0-1&t=CVFV7I1bptC5k4qP-1
+
+Current plan for MVP
+Will be added to once basic functionality is complete
