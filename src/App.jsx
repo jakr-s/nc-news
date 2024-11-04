@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import ArticleCard from './components/ArticleCard/ArticleCard';
-import fetchArticles from './utils/api';
+import { useState, useEffect } from "react";
+import ArticleList from "./components/ArticleList/ArticleList";
+import fetchArticles from "./utils/api";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <>
-      <ArticleCard articles={articles} />
+      <ArticleList articles={articles} />
     </>
   );
 }
