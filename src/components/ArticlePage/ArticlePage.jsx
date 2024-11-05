@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchArticleById } from "../../utils/api";
 import CommentList from "../CommentList/CommentList";
+import "./ArticlePage.css";
+
 
 export default function ArticlePage() {
   const { article_id } = useParams();
@@ -16,12 +18,12 @@ export default function ArticlePage() {
   if (!article) return <div>Loading...</div>;
 
   return (
-    <div className="">
-      <div>
-        <h1>{article.title}</h1>
-        <p>{article.body}</p>
+    <div className="page-container">
+      <div className="article--container">
+        <h1 className="article--title">{article.title}</h1>
+        <p className="article--body">{article.body}</p>
       </div>
-      <CommentList article_id={article_id} />
+      <CommentList article_id={article_id} className="comment-list" />
     </div>
   );
 }

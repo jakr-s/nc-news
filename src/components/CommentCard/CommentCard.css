@@ -1,0 +1,13 @@
+.comment:not(:last-child) {
+  border-bottom: 1px slategray solid;
+}
+
+.comment--info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment--body-votes {
+  display: inline-flex;
+  margin: 0.5rem auto 0.5rem;
+}
