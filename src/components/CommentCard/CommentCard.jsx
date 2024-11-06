@@ -1,3 +1,5 @@
+import VoteButton from "../VoteButton/VoteButton";
+import { updateCommentVotes } from "../../utils/api";
 import "./CommentCard.css";
 
 export default function CommentCard({ comment }) {
@@ -9,11 +11,11 @@ export default function CommentCard({ comment }) {
       </div>
       <div className="comment--body-votes">
         <p>{comment.body}</p>
-        <div className="comment--vote-counter">
-          <small>+</small>
-          <h5>{comment.votes}</h5>
-          <small>-</small>
-        </div>
+        <VoteButton
+          id={comment.comment_id}
+          votes={comment.votes}
+          updateVotes={updateCommentVotes}
+        />
       </div>
     </div>
   );

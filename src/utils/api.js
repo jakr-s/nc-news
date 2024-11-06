@@ -30,3 +30,21 @@ export function fetchCommentsByArticle(article_id) {
       console.error("Error fetching comments", error);
     });
 }
+
+export function updateArticleVotes(article_id, inc_votes) {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes })
+    .then(({ data }) => data.article)
+    .catch((error) => {
+      console.error("Error updating article votes", error);
+    });
+}
+
+export function updateCommentVotes(comment_id, inc_votes) {
+  return api
+    .patch(`/comments/${comment_id}`, { inc_votes })
+    .then(({ data }) => data.comment)
+    .catch((error) => {
+      console.error("Error updating comment votes", error);
+    });
+}

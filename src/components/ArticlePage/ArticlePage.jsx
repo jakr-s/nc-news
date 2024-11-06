@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { fetchArticleById } from "../../utils/api";
 import CommentList from "../CommentList/CommentList";
 import "./ArticlePage.css";
-
+import { updateArticleVotes } from "../../utils/api";
+import VoteButton from "../VoteButton/VoteButton";
 
 export default function ArticlePage() {
   const { article_id } = useParams();
@@ -21,8 +22,13 @@ export default function ArticlePage() {
     <div className="page-container">
       <div className="article--container">
         <h1 className="article--title">{article.title}</h1>
-        <p className="article--body">{article.body}</p>
+        <VoteButton
+          id={article_id}
+          votes={article.votes}
+          updateVotes={updateArticleVotes}
+        />
       </div>
+      <p className="article--body">{article.body}</p>
       <CommentList article_id={article_id} className="comment-list" />
     </div>
   );
