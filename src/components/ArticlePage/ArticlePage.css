@@ -1,7 +1,8 @@
-.article--body {
-  margin-top: 1rem;
+.article--container {
+  display: inline-flex;
+  align-items: center;
 }
 
-.comment-list {
-  margin-top: 3rem;
+.article--body {
+  margin-top: 1rem;
 }

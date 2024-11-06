@@ -1,5 +1,5 @@
 .comment:not(:last-child) {
-  border-bottom: 1px slategray solid;
+  border-bottom: 1px black solid;
 }
 
 .comment--info {
@@ -9,5 +9,9 @@
 
 .comment--body-votes {
   display: inline-flex;
-  margin: 0.5rem auto 0.5rem;
+  justify-content: space-between;
+}
+
+.comment--body-votes > p {
+  margin-right: 20px;
 }
