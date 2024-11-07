@@ -3,15 +3,23 @@
 }
 
 .comment--info {
-  display: flex;
-  justify-content: space-between;
-}
-
-.comment--body-votes {
   display: inline-flex;
-  justify-content: space-between;
+  gap: 1rem;
 }
 
-.comment--body-votes > p {
-  margin-right: 20px;
+.comment--body {
+  display: flex;
+  align-items: center;
+  margin: 0.7rem 0;
+}
+
+.comment--body > p {
+  margin-right: auto;
+  max-width: 90%;
+}
+
+.comment--actions {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
 }

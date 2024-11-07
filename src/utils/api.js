@@ -62,3 +62,7 @@ export function postComment(article_id, username, body) {
       throw error.response?.data?.msg || "Failed to post comment";
     });
 }
+
+export function deleteComment(comment_id) {
+  return api.delete(`/comments/${comment_id}`);
+}
