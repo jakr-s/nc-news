@@ -8,6 +8,7 @@ import VoteButton from "../VoteButton/VoteButton";
 import { updateArticleVotes } from "../../utils/api";
 
 export default function ArticlePage() {
+  const currentUser = "grumpy19"; // Hardcoded user
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [loadingArticle, setLoadingArticle] = useState(true);
@@ -59,11 +60,14 @@ export default function ArticlePage() {
       </div>
       <p className="article--body">{article.body}</p>
 
-      <CommentForm article_id={article_id} addComment={addComment} />
-
+      <CommentForm article_id={article_id} addComment={addComment} currentUser={currentUser} />
       {loadingComments && <div>Loading comments...</div>}
       {errorComments && <div>{errorComments}</div>}
-      <CommentList comments={comments} />
+      <CommentList
+        comments={comments}
+        currentUser={currentUser}
+        setComments={setComments}
+      />
     </div>
   );
 }

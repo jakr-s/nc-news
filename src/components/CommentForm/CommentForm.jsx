@@ -2,7 +2,7 @@ import { useState } from "react";
 import { postComment } from "../../utils/api";
 import "./CommentForm.css";
 
-export default function CommentForm({ article_id, addComment }) {
+export default function CommentForm({ article_id, addComment, currentUser }) {
   const [commentBody, setCommentBody] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ export default function CommentForm({ article_id, addComment }) {
     setError(null);
 
     // "grumpy19" is hardcoded user to bypass authentication
-    postComment(article_id, "grumpy19", commentBody)
+    postComment(article_id, currentUser, commentBody)
       .then((newComment) => {
         addComment(newComment);
         setCommentBody("");
