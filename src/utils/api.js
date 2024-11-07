@@ -53,3 +53,12 @@ export function updateCommentVotes(comment_id, inc_votes) {
       console.error("Error updating comment votes", error);
     });
 }
+
+export function postComment(article_id, username, body) {
+  return api
+    .post(`/articles/${article_id}/comments`, { username, body })
+    .then(({ data }) => data.comment)
+    .catch((error) => {
+      throw error.response?.data?.msg || "Failed to post comment";
+    });
+}
