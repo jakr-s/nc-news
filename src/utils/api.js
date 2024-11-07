@@ -16,9 +16,14 @@ export default function fetchArticles() {
 export function fetchArticleById(article_id) {
   return api
     .get(`/articles/${article_id}`)
-    .then(({ data }) => data.article)
+    .then(({ data }) => {
+      if (!data.article) {
+        throw new Error("Article not found");
+      }
+      return data.article;
+    })
     .catch((error) => {
-      console.error("Error fetching article", error);
+      throw error.response?.data?.msg || "Failed to fetch article";
     });
 }
 
@@ -27,7 +32,7 @@ export function fetchCommentsByArticle(article_id) {
     .get(`/articles/${article_id}/comments`)
     .then(({ data }) => data.comments)
     .catch((error) => {
-      console.error("Error fetching comments", error);
+      throw error.response?.data?.msg || "Failed to fetch comments";
     });
 }
 

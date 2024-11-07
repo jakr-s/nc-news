@@ -5,25 +5,27 @@ import { fetchCommentsByArticle } from "../../utils/api";
 
 export default function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingComments, setLoadingComments] = useState(true);
+  const [errorComments, setErrorComments] = useState(null);
 
   useEffect(() => {
     fetchCommentsByArticle(article_id)
       .then((fetchedComments) => {
         setComments(fetchedComments);
-        setLoading(false);
+        setLoadingComments(false);
       })
       .catch((error) => {
-        console.error("Error fetching comments", error);
-        setLoading(false);
+        setErrorComments(error);
+        setLoadingComments(false);
       });
   }, [article_id]);
 
-  // if (loading) return <div>Loading comments...</div>;
+  if (loadingComments) return <div>Loading comments...</div>;
+  if (errorComments) return <div>{errorComments}</div>;
+  if (comments.length === 0) return <div>No comments yet.</div>;
 
   return (
     <div className="comment-list">
-      {loading && <div>Loading comments...</div>}
       {comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />
       ))}
