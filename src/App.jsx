@@ -38,4 +38,5 @@ export default function App() {
  * - Add NavBar
  * - Refactor all styles
  * - Add styles for VoteButton component
+ * - Avoid stress related death
  */
