@@ -6,12 +6,21 @@ import fetchArticles from "./utils/api";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchArticles().then((fetchedArticles) => {
-      setArticles(fetchedArticles);
-    });
+    fetchArticles()
+      .then((fetchedArticles) => {
+        setArticles(fetchedArticles);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching articles", error);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <Routes>
