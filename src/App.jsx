@@ -29,3 +29,13 @@ export default function App() {
     </Routes>
   );
 }
+
+/**
+ * TODO:
+ * - Add error handling UI for fetchArticles
+ * - Refactor Loading states
+ * - Implement pagination for ArticleList
+ * - Add NavBar
+ * - Refactor all styles
+ * - Add styles for VoteButton component
+ */
