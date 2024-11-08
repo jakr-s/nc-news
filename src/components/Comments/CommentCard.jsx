@@ -1,9 +1,7 @@
-import VoteButton from "../VoteButton/VoteButton";
-import { updateCommentVotes } from "../../utils/api";
-import "./CommentCard.css";
-
+import VoteButton from "../Common/VoteButton";
+import { updateCommentVotes, deleteComment } from "../../utils/api";
 import { useState } from "react";
-import { deleteComment } from "../../utils/api";
+import "./CommentCard.css";
 
 export default function CommentCard({ comment, currentUser, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -26,15 +24,14 @@ export default function CommentCard({ comment, currentUser, onDelete }) {
         <small>{comment.author}</small>
         <small>{comment.created_at}</small>
         {comment.author === currentUser && (
-            <button onClick={handleDelete} disabled={isDeleting}>
-              {isDeleting ? "Deleting..." : "Delete"}
-            </button>
-          )}
+          <button onClick={handleDelete} disabled={isDeleting}>
+            {isDeleting ? "Deleting..." : "Delete"}
+          </button>
+        )}
       </div>
       <div className="comment--body">
         <p>{comment.body}</p>
         <div className="comment--actions">
-
           <VoteButton
             id={comment.comment_id}
             votes={comment.votes}

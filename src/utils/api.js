@@ -4,12 +4,12 @@ const api = axios.create({
   baseURL: "https://be-nc-news-z0a0.onrender.com/api",
 });
 
-export default function fetchArticles() {
+export function fetchArticles() {
   return api
-    .get(`/articles`)
+    .get("/articles")
     .then(({ data }) => data.articles)
     .catch((error) => {
-      console.error("Error fetching items", error);
+      throw new Error("Failed to fetch articles.");
     });
 }
 

@@ -1,4 +1,4 @@
-import CommentCard from "../CommentCard/CommentCard";
+import CommentCard from "./CommentCard";
 import "./CommentList.css";
 
 export default function CommentList({ comments, currentUser, setComments }) {
