@@ -1,9 +1,7 @@
 import VoteButton from "../Common/VoteButton";
-import { updateCommentVotes } from "../../utils/api";
-import "./CommentCard.css";
-
+import { updateCommentVotes, deleteComment } from "../../utils/api";
 import { useState } from "react";
-import { deleteComment } from "../../utils/api";
+import "./CommentCard.css";
 
 export default function CommentCard({ comment, currentUser, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);
