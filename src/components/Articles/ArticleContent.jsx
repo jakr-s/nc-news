@@ -22,7 +22,13 @@ export default function ArticleContent({ article_id }) {
   }, [article_id]);
 
   if (loadingArticle) return <p>Loading article...</p>;
-  if (errorArticle) return <p>Error loading article: {errorArticle.message}</p>;
+  if (errorArticle)
+    return (
+      <div>
+        <h2>Error</h2>
+        <p>{errorArticle}</p>
+      </div>
+    );
 
   return (
     <div className="article-content">

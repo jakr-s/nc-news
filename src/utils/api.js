@@ -5,25 +5,16 @@ const api = axios.create({
 });
 
 export function fetchArticles(topic, sort_by = "created_at", order = "desc") {
-  let url = "/articles";
-  const params = [];
-  if (topic) {
-    params.push(`topic=${topic}`);
-  }
-  if (sort_by) {
-    params.push(`sort_by=${sort_by}`);
-  }
-  if (order) {
-    params.push(`order=${order}`);
-  }
-  if (params.length) {
-    url += `?${params.join("&")}`;
-  }
+  const params = {};
+  if (topic) params.topic = topic;
+  if (sort_by) params.sort_by = sort_by;
+  if (order) params.order = order;
+
   return api
-    .get(url)
+    .get("/articles", { params })
     .then(({ data }) => data.articles)
-    .catch(() => {
-      throw new Error("Failed to fetch articles.");
+    .catch((error) => {
+      throw error.response?.data?.msg || "Failed to fetch articles.";
     });
 }
 
@@ -37,7 +28,7 @@ export function fetchArticleById(article_id) {
       return data.article;
     })
     .catch((error) => {
-      throw error.response?.data?.msg || "Failed to fetch article";
+      throw error.response?.data?.msg || "Article not found";
     });
 }
 

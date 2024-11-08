@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchTopics } from "../../utils/api";
 import { Link } from "react-router-dom";
-// import "./TopicsList.css";
 
 export default function TopicsList() {
   const [topics, setTopics] = useState([]);
@@ -20,8 +19,8 @@ export default function TopicsList() {
       });
   }, []);
 
-  if (loading) return <div>Loading topics...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return null;
+  if (error) return null;
 
   return (
     <div className="topics-list">

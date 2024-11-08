@@ -20,14 +20,20 @@ export default function ArticleList() {
         setArticles(fetchedArticles);
         setLoading(false);
       })
-      .catch(() => {
-        setError("Failed to fetch articles.");
+      .catch((error) => {
+        setError(error);
         setLoading(false);
       });
   }, [topic, sort_by, order]);
 
   if (loading) return <div>Loading articles...</div>;
-  if (error) return <div>{error}</div>;
+  if (error)
+    return (
+      <div>
+        <h2>Error</h2>
+        <p>{error}</p>
+      </div>
+    );
 
   return (
     <div className="article-list">

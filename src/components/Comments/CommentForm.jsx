@@ -17,7 +17,6 @@ export default function CommentForm({ article_id, addComment, currentUser }) {
     setIsSubmitting(true);
     setError(null);
 
-    // "grumpy19" is hardcoded user to bypass authentication
     postComment(article_id, currentUser, commentBody)
       .then((newComment) => {
         addComment(newComment);
@@ -26,8 +25,8 @@ export default function CommentForm({ article_id, addComment, currentUser }) {
         setIsSubmitting(false);
         setTimeout(() => setSuccessMessage(""), 3000);
       })
-      .catch(() => {
-        setError("Failed to post comment. Please try again.");
+      .catch((error) => {
+        setError(error);
         setIsSubmitting(false);
       });
   };
