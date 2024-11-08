@@ -4,10 +4,20 @@ const api = axios.create({
   baseURL: "https://be-nc-news-z0a0.onrender.com/api",
 });
 
-export function fetchArticles(topic) {
+export function fetchArticles(topic, sort_by = "created_at", order = "desc") {
   let url = "/articles";
+  const params = [];
   if (topic) {
-    url += `?topic=${topic}`;
+    params.push(`topic=${topic}`);
+  }
+  if (sort_by) {
+    params.push(`sort_by=${sort_by}`);
+  }
+  if (order) {
+    params.push(`order=${order}`);
+  }
+  if (params.length) {
+    url += `?${params.join("&")}`;
   }
   return api
     .get(url)
