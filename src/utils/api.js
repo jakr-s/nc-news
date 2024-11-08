@@ -4,11 +4,15 @@ const api = axios.create({
   baseURL: "https://be-nc-news-z0a0.onrender.com/api",
 });
 
-export function fetchArticles() {
+export function fetchArticles(topic) {
+  let url = "/articles";
+  if (topic) {
+    url += `?topic=${topic}`;
+  }
   return api
-    .get("/articles")
+    .get(url)
     .then(({ data }) => data.articles)
-    .catch((error) => {
+    .catch(() => {
       throw new Error("Failed to fetch articles.");
     });
 }
@@ -65,4 +69,13 @@ export function postComment(article_id, username, body) {
 
 export function deleteComment(comment_id) {
   return api.delete(`/comments/${comment_id}`);
+}
+
+export function fetchTopics() {
+  return api
+    .get("/topics")
+    .then(({ data }) => data.topics)
+    .catch(() => {
+      throw new Error("Failed to fetch topics.");
+    });
 }
