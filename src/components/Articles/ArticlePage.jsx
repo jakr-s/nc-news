@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchArticleById, fetchCommentsByArticle } from "../../utils/api";
-import CommentList from "../CommentList/CommentList";
-import CommentForm from "../CommentForm/CommentForm";
+import CommentList from "../Comments/CommentList";
+import CommentForm from "../Comments/CommentForm";
 import "./ArticlePage.css";
-import VoteButton from "../VoteButton/VoteButton";
+import VoteButton from "../Common/VoteButton";
 import { updateArticleVotes } from "../../utils/api";
 
 export default function ArticlePage() {
@@ -60,7 +60,11 @@ export default function ArticlePage() {
       </div>
       <p className="article--body">{article.body}</p>
 
-      <CommentForm article_id={article_id} addComment={addComment} currentUser={currentUser} />
+      <CommentForm
+        article_id={article_id}
+        addComment={addComment}
+        currentUser={currentUser}
+      />
       {loadingComments && <div>Loading comments...</div>}
       {errorComments && <div>{errorComments}</div>}
       <CommentList

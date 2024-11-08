@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import ArticleList from "./components/ArticleList/ArticleList";
-import ArticlePage from "./components/ArticlePage/ArticlePage";
+import ArticleList from "./components/Articles/ArticleList";
+import ArticlePage from "./components/Articles/ArticlePage";
 import fetchArticles from "./utils/api";
 
 export default function App() {
